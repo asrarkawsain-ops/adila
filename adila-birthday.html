@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Adila ✿</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --blush: #E8C4B0;
+    --dusty-rose: #C9896A;
+    --deep: #2C2420;
+    --muted: #8A7060;
+    --petal: #F0DDD4;
+    --sage: #A8B5A0;
+    --accent: #B5603A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--deep);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ── PAGE SYSTEM ── */
+  .page {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.7s ease forwards;
+  }
+  .page.active { display: flex; flex-direction: column; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── NAV DOTS ── */
+  .nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+  }
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--blush);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .dot.active {
+    background: var(--dusty-rose);
+    transform: scale(1.5);
+  }
+
+  /* ── FLOATING PETALS ── */
+  .petal-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .petal-float {
+    position: absolute;
+    font-size: 14px;
+    opacity: 0.18;
+    animation: floatPetal linear infinite;
+    color: var(--dusty-rose);
+  }
+  @keyframes floatPetal {
+    0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.2; }
+    90%  { opacity: 0.15; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ══════════════════════════════════
+     PAGE 1 — COVER
+  ══════════════════════════════════ */
+  #page1 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .cover-inner { position: relative; z-index: 1; max-width: 360px; }
+
+  .cover-top-line {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+
+  .flower-emblem {
+    font-size: 42px;
+    margin-bottom: 24px;
+    display: block;
+    animation: gentleSpin 12s linear infinite;
+  }
+  @keyframes gentleSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .cover-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 15vw, 80px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1;
+    color: var(--deep);
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 2px;
+    margin-bottom: 48px;
+  }
+
+  .date-badge {
+    display: inline-block;
+    background: var(--petal);
+    border: 1px solid var(--blush);
+    border-radius: 40px;
+    padding: 8px 22px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dusty-rose);
+    font-weight: 500;
+    margin-bottom: 56px;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+  }
+  .btn-primary {
+    background: var(--deep);
+    color: var(--cream);
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    border: 1px solid var(--blush);
+    color: var(--muted);
+    padding: 11px 28px;
+    border-radius: 50px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 14px;
+  }
+  .btn-outline:hover {
+    border-color: var(--dusty-rose);
+    color: var(--dusty-rose);
+  }
+  .btn-ghost {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .btn-ghost:hover { border-color: var(--dusty-rose); color: var(--dusty-rose); }
+
+  .cover-btns { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+  /* corner deco */
+  .corner-deco {
+    position: absolute;
+    font-size: 11px;
+    color: var(--blush);
+    letter-spacing: 2px;
+  }
+  .corner-deco.tl { top: 24px; left: 24px; }
+  .corner-deco.tr { top: 24px; right: 24px; }
+  .corner-deco.bl { bottom: 24px; left: 24px; }
+  .corner-deco.br { bottom: 24px; right: 24px; }
+
+  /* ══════════════════════════════════
+     PAGE 2 — LETTER
+  ══════════════════════════════════ */
+  #page2 {
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    padding: 48px 32px 32px;
+    border-bottom: 1px solid var(--petal);
+    position: relative;
+    z-index: 1;
+  }
+  .page-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 9vw, 48px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--deep);
+    line-height: 1.1;
+  }
+
+  .letter-body {
+    padding: 36px 32px 48px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  .letter-open {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--dusty-rose);
+    margin-bottom: 24px;
+  }
+
+  .letter-p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--deep);
+    margin-bottom: 20px;
+    opacity: 0.88;
+  }
+
+  .letter-highlight {
+    background: linear-gradient(120deg, var(--petal) 0%, transparent 100%);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-style: italic;
+  }
+
+  .letter-sign {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .letter-sign span:first-child { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
+  .letter-sign span:last-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--deep);
+  }
+
+  .page-footer {
+    padding: 28px 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--petal);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ══════════════════════════════════
+     PAGE 3 — MEMORIES
+  ══════════════════════════════════ */
+  #page3 {
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .memory-grid {
+    padding: 0 24px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .memory-card {
+    background: white;
+    border: 1px solid var(--petal);
+    border-radius: 16px;
+    padding: 22px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .memory-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(44,36,32,0.08);
+  }
+  .memory-card.wide { grid-column: 1 / -1; }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .card-text {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+  .card-accent {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 50px; height: 50px;
+    background: var(--petal);
+    border-radius: 50% 0 0 0;
+    opacity: 0.5;
+  }
+
+  /* ══════════════════════════════════
+     PAGE 4 — WISHES
+  ══════════════════════════════════ */
+  #page4 {
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .wishes-list {
+    padding: 0 28px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wish-item {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--petal);
+    position: relative;
+    animation: slideUp 0.6s ease both;
+  }
+  .wish-item:nth-child(1) { animation-delay: 0.1s; }
+  .wish-item:nth-child(2) { animation-delay: 0.2s; }
+  .wish-item:nth-child(3) { animation-delay: 0.3s; }
+  .wish-item:nth-child(4) { animation-delay: 0.4s; }
+  .wish-item:nth-child(5) { animation-delay: 0.5s; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .wish-num {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--blush);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .wish-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 5vw, 24px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--deep);
+    margin-bottom: 10px;
+  }
+  .wish-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ══════════════════════════════════
+     PAGE 5 — FLOWERS FOR ADILA
+  ══════════════════════════════════ */
+  #page5 {
+    min-height: 100vh;
+    position: relative;
+    justify-content: space-between;
+  }
+
+  .flower-garden {
+    padding: 0 28px 12px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .garden-intro {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+
+  .flower-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .flower-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid var(--petal);
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-size: 13px;
+    color: var(--deep);
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .flower-tag:hover {
+    background: var(--petal);
+    border-color: var(--blush);
+    transform: scale(1.04);
+  }
+
+  .big-quote {
+    margin-top: 36px;
+    padding: 28px 0;
+    border-top: 1px solid var(--petal);
+  }
+  .big-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 6vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--deep);
+  }
+  .big-quote-attr {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--blush);
+    text-transform: uppercase;
+  }
+
+  /* ══════════════════════════════════
+     PAGE 6 — FINALE
+  ══════════════════════════════════ */
+  #page6 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 48px 28px;
+    position: relative;
+    background: var(--deep);
+    color: var(--cream);
+    min-height: 100vh;
+  }
+
+  .finale-inner { position: relative; z-index: 1; max-width: 340px; }
+
+  .finale-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 32px;
+    opacity: 0.8;
+  }
+
+  .finale-flower { font-size: 36px; margin-bottom: 24px; display: block; }
+
+  .finale-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 11vw, 56px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+
+  .finale-text {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--blush);
+    opacity: 0.8;
+    margin-bottom: 48px;
+  }
+
+  .finale-tag {
+    display: inline-block;
+    border: 1px solid rgba(232,196,176,0.3);
+    border-radius: 50px;
+    padding: 8px 22px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 48px;
+  }
+
+  .btn-light {
+    background: var(--cream);
+    color: var(--deep);
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+  }
+  .btn-light:hover { background: var(--petal); transform: translateY(-2px); }
+
+  /* dark-mode petal */
+  #page6 .petal-float { color: var(--blush); }
+
+  /* confetti burst */
+  .confetti {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+    display: none;
+  }
+  .conf-piece {
+    position: absolute;
+    top: -10px;
+    width: 6px; height: 6px;
+    border-radius: 1px;
+    animation: confFall 2.5s ease-in forwards;
+  }
+  @keyframes confFall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* progress bar */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--dusty-rose), var(--blush));
+    transition: width 0.4s ease;
+    z-index: 200;
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Floating Petals -->
+<div class="petal-bg" id="petalBg"></div>
+
+<!-- Nav Dots -->
+<div class="nav-dots" id="navDots"></div>
+
+<!-- Confetti -->
+<div class="confetti" id="confetti"></div>
+
+
+<!-- ══════════════ PAGE 1 — COVER ══════════════ -->
+<section class="page active" id="page1">
+  <div class="corner-deco tl">✿</div>
+  <div class="corner-deco tr">✿</div>
+  <div class="corner-deco bl">June 15</div>
+  <div class="corner-deco br">2025</div>
+
+  <div class="cover-inner">
+    <p class="cover-top-line">A little something for you</p>
+    <span class="flower-emblem">✾</span>
+    <h1 class="cover-name">Adila</h1>
+    <p class="cover-subtitle">the one who became family</p>
+    <div class="date-badge">15 · June · Birthday</div>
+    <div class="cover-btns">
+      <button class="btn btn-primary" onclick="goTo(2)">Open Your Gift →</button>
+      <button class="btn btn-outline" onclick="goTo(4)">Skip to Wishes</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════ PAGE 2 — LETTER ══════════════ -->
+<section class="page" id="page2">
+  <div class="page-header">
+    <p class="page-label">A letter for you</p>
+    <h2 class="page-title">Dear Adila,</h2>
+  </div>
+  <div class="letter-body">
+    <p class="letter-open">Happy Birthday, sister 🤍</p>
+    <p class="letter-p">I never officially announced it, and neither did you — but somehow you became family. The kind of family you choose. And honestly? Best decision life ever made for me.</p>
+    <p class="letter-p">Our university days were a whole vibe — attending classes when we felt like it, <span class="letter-highlight">mastering the art of last-minute exam prep</span>, random treats for no reason, and hangout plans that somehow always ended up being the best memories.</p>
+    <p class="letter-p">Now we're in different cities, but the friendship didn't downgrade — it just <span class="letter-highlight">upgraded to reel-sharing mode</span>. Which honestly suits us perfectly.</p>
+    <p class="letter-p">What I love most? You're kind without making it a performance. Funny without even trying. And rare in a way that most people don't even realise — no jealousy, no negativity, just pure good energy. That's you.</p>
+    <p class="letter-p">And yes — you were my unofficial pen supplier all through university. Sitting in my classroom now, I still feel that small habit of yours missing. Some things just leave a quiet little mark.</p>
+    <div class="letter-sign">
+      <span>with love,</span>
+      <span>Your unofficial brother/friend/family 🌸</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="btn btn-ghost" onclick="goTo(1)">← Back</button>
+    <button class="btn btn-primary" onclick="goTo(3)">Our Memories →</button>
+  </div>
+</section>
+
+
+<!-- ══════════════ PAGE 3 — MEMORIES ══════════════ -->
+<section class="page" id="page3">
+  <div class="page-header">
+    <p class="page-label">Chapters we lived</p>
+    <h2 class="page-title">The moments<br>between us</h2>
+  </div>
+  <div class="memory-grid">
+    <div class="memory-card">
+      <span class="card-icon">📚</span>
+      <p class="card-title">Last-minute<br>Legend</p>
+      <p class="card-text">Turning panic into grades, together. Every time.</p>
+      <div class="card-accent"></div>
+    </div>
+    <div class="memory-card">
+      <span class="card-icon">✏️</span>
+      <p class="card-title">The Pen<br>Supplier</p>
+      <p class="card-text">My daily lifesaver. Still miss that small habit.</p>
+      <div class="card-accent"></div>
+    </div>
+    <div class="memory-card wide">
+      <span class="card-icon">🎲</span>
+      <p class="card-title">Expert-level class bunking</p>
+      <p class="card-text">The planning was half the fun. The execution was even better. And the regrets? Absolutely none.</p>
+      <div class="card-accent"></div>
+    </div>
+    <div class="memory-card">
+      <span class="card-icon">🌏</span>
+      <p class="card-title">Travel<br>Plans</p>
+      <p class="card-text">Still waiting to happen. But they will.</p>
+      <div class="card-accent"></div>
+    </div>
+    <div class="memory-card">
+      <span class="card-icon">📱</span>
+      <p class="card-title">Reel-sharing<br>Mode</p>
+      <p class="card-text">Distance-proof friendship, activated.</p>
+      <div class="card-accent"></div>
+    </div>
+    <div class="memory-card wide">
+      <span class="card-icon">🌸</span>
+      <p class="card-title">Flowers always remind me of you</p>
+      <p class="card-text">Whenever I see flowers now, you're the first thought. And right after that — a quiet wish that I could hand them to you in that moment.</p>
+      <div class="card-accent"></div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="btn btn-ghost" onclick="goTo(2)">← Back</button>
+    <button class="btn btn-primary" onclick="goTo(4)">Read Wishes →</button>
+  </div>
+</section>
+
+
+<!-- ══════════════ PAGE 4 — WISHES ══════════════ -->
+<section class="page" id="page4">
+  <div class="page-header">
+    <p class="page-label">All for you, Adila</p>
+    <h2 class="page-title">Birthday<br>Wishes</h2>
+  </div>
+  <div class="wishes-list">
+    <div class="wish-item">
+      <p class="wish-num">01</p>
+      <p class="wish-quote">"May this year feel like the first page of your favourite chapter."</p>
+      <p class="wish-sub">New beginnings, beautiful surprises, and a story worth telling.</p>
+    </div>
+    <div class="wish-item">
+      <p class="wish-num">02</p>
+      <p class="wish-quote">"Here's to laughing at things that shouldn't be funny — and finding you still funny every single time."</p>
+      <p class="wish-sub">May your natural humour keep bringing lightness to every room you walk into.</p>
+    </div>
+    <div class="wish-item">
+      <p class="wish-num">03</p>
+      <p class="wish-quote">"May every flower you see this year feel like it was meant for you — because honestly, they all are."</p>
+      <p class="wish-sub">You and flowers — I can't separate you anymore, and I don't want to.</p>
+    </div>
+    <div class="wish-item">
+      <p class="wish-num">04</p>
+      <p class="wish-quote">"I wish you every journey on your travel list — one city, one memory, one dream at a time."</p>
+      <p class="wish-sub">Those travel plans we made? They're not forgotten. The world is waiting for you, Adila.</p>
+    </div>
+    <div class="wish-item">
+      <p class="wish-num">05</p>
+      <p class="wish-quote">"May kindness come back to you the way you give it — quietly, genuinely, and without keeping score."</p>
+      <p class="wish-sub">The world needs more people like you. But today, the universe needs to give back to you.</p>
+    </div>
+    <div class="wish-item">
+      <p class="wish-num">06</p>
+      <p class="wish-quote">"Happy birthday to the girl who somehow turned 'just a friend' into 'basically family.'"</p>
+      <p class="wish-sub">No announcement needed. It just happened. And it's one of the best things that did.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="btn btn-ghost" onclick="goTo(3)">← Back</button>
+    <button class="btn btn-primary" onclick="goTo(5)">Something special →</button>
+  </div>
+</section>
+
+
+<!-- ══════════════ PAGE 5 — FLOWERS FOR ADILA ══════════════ -->
+<section class="page" id="page5">
+  <div class="page-header">
+    <p class="page-label">Because you love them most</p>
+    <h2 class="page-title">Flowers,<br>for you</h2>
+  </div>
+  <div class="flower-garden">
+    <p class="garden-intro">"Every flower I see now carries your name. Consider this your digital bouquet — until the real ones come."</p>
+    <div class="flower-row">
+      <div class="flower-tag">🌸 Cherry Blossom</div>
+      <div class="flower-tag">🌷 Tulip</div>
+    </div>
+    <div class="flower-row">
+      <div class="flower-tag">🌺 Hibiscus</div>
+      <div class="flower-tag">🌼 Daisy</div>
+      <div class="flower-tag">✿ Wild Rose</div>
+    </div>
+    <div class="flower-row">
+      <div class="flower-tag">🪷 Lotus</div>
+      <div class="flower-tag">🌹 Rose</div>
+    </div>
+    <div class="flower-row">
+      <div class="flower-tag">💐 A whole bouquet</div>
+    </div>
+    <div class="big-quote">
+      <p class="big-quote-text">"Whenever I see flowers, you come to mind first. Always. Without fail."</p>
+      <p class="big-quote-attr">— your person who forgets pens but never forgets you</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="btn btn-ghost" onclick="goTo(4)">← Back</button>
+    <button class="btn btn-primary" onclick="goTo(6)">Final message →</button>
+  </div>
+</section>
+
+
+<!-- ══════════════ PAGE 6 — FINALE ══════════════ -->
+<section class="page" id="page6">
+  <div class="finale-inner">
+    <p class="finale-label">June 15 · A special day</p>
+    <span class="finale-flower">✾</span>
+    <h2 class="finale-title">Happy Birthday,<br>Adila</h2>
+    <p class="finale-text">You are the kind of rare that doesn't need a spotlight. You just glow — quietly, genuinely, and completely.<br><br>Here's to you. All of you. This year and every one after.</p>
+    <div class="finale-tag">With love · Always</div>
+    <br>
+    <button class="btn btn-light" onclick="celebrate()">🎉 Celebrate!</button>
+    <br><br>
+    <button class="btn btn-ghost" style="color:var(--blush); border-color: rgba(232,196,176,0.3);" onclick="goTo(1)">↩ Start Over</button>
+  </div>
+</section>
+
+
+<script>
+  const TOTAL_PAGES = 6;
+  let currentPage = 1;
+
+  // ── Build floating petals ──
+  const petalBg = document.getElementById('petalBg');
+  const petalChars = ['✿','✾','❀','✽','⊹'];
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal-float';
+    p.textContent = petalChars[i % petalChars.length];
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.animationDuration = (12 + Math.random() * 14) + 's';
+    p.style.animationDelay = (Math.random() * 14) + 's';
+    p.style.fontSize = (10 + Math.random() * 10) + 'px';
+    petalBg.appendChild(p);
+  }
+
+  // ── Build nav dots ──
+  const dotsEl = document.getElementById('navDots');
+  for (let i = 1; i <= TOTAL_PAGES; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    d.title = 'Page ' + i;
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    document.getElementById('page' + currentPage).classList.remove('active');
+    document.querySelectorAll('.dot')[currentPage - 1].classList.remove('active');
+
+    currentPage = n;
+
+    document.getElementById('page' + currentPage).classList.add('active');
+    document.querySelectorAll('.dot')[currentPage - 1].classList.add('active');
+
+    // progress bar
+    const pct = ((currentPage - 1) / (TOTAL_PAGES - 1)) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Swipe support ──
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0 && currentPage < TOTAL_PAGES) goTo(currentPage + 1);
+      if (dx > 0 && currentPage > 1) goTo(currentPage - 1);
+    }
+  });
+
+  // ── Confetti ──
+  function celebrate() {
+    const conf = document.getElementById('confetti');
+    conf.style.display = 'block';
+    conf.innerHTML = '';
+    const colors = ['#E8C4B0','#C9896A','#A8B5A0','#FAF7F2','#B5603A','#F0DDD4'];
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement('div');
+      c.className = 'conf-piece';
+      c.style.left = (Math.random() * 100) + 'vw';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.animationDelay = (Math.random() * 1.2) + 's';
+      c.style.animationDuration = (1.8 + Math.random() * 1.2) + 's';
+      c.style.width = (4 + Math.random() * 6) + 'px';
+      c.style.height = (4 + Math.random() * 6) + 'px';
+      conf.appendChild(c);
+    }
+    setTimeout(() => { conf.style.display = 'none'; }, 3500);
+  }
+
+  // init progress
+  document.getElementById('progressBar').style.width = '0%';
+</script>
+</body>
+</html>
